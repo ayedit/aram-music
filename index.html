@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AY Edit - وبسایت موسیقی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('https://source.unsplash.com/1600x900/?luxury,music') no-repeat center center/cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            font-size: 24px;
+        }
+        .container {
+            margin: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .upload-section {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px dashed #fff;
+            cursor: pointer;
+        }
+        .upload-section:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 50px;
+            font-weight: bold;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header><a href="https://www.ayedit.com" style="color: white; text-decoration: none;">AY Edit - موسیقی و ویدیو</a></header>
+    <div class="container">
+        <div class="logo">AY</div>
+        <h2>به دنیای موسیقی AY Edit خوش آمدید</h2>
+        <p>اینجا می‌توانید آهنگ‌ها و ویدیوهای خود را آپلود کنید.</p>
+        <label class="upload-section">
+            <p>فایل خود را اینجا بکشید یا کلیک کنید</p>
+            <input type="file" id="fileUpload" accept="audio/*,video/*">
+        </label>
+    </div>
+</body>
+</html>
