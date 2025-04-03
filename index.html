@@ -9,7 +9,6 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            /* پس‌زمینه جدید با تصویر گل */
             background: url('https://source.unsplash.com/1600x900/?flowers') no-repeat center center/cover;
             color: white;
             margin: 0;
@@ -31,7 +30,7 @@
             padding: 20px;
             border: 2px dashed #fff;
             cursor: pointer;
-            display: none; /* مخفی بودن بخش آپلود به طور پیش‌فرض */
+            display: none;
         }
         .upload-section:hover {
             background: rgba(255, 255, 255, 0.2);
@@ -64,7 +63,11 @@
                 <p>فایل خود را اینجا بکشید یا کلیک کنید</p>
                 <input type="file" id="fileUpload" accept="audio/*,video/*">
             </label>
+            <button onclick="uploadFile()">آپلود فایل</button>
         </div>
+        
+        <!-- نمایش وضعیت آپلود -->
+        <div id="uploadStatus"></div>
     </div>
 
     <script>
@@ -76,6 +79,37 @@
             document.getElementById("uploadSection").style.display = "block"; // نمایش بخش آپلود برای شما
         } else {
             document.getElementById("uploadSection").style.display = "none"; // مخفی کردن بخش آپلود برای بقیه
+        }
+
+        // عملکرد آپلود فایل
+        function uploadFile() {
+            const fileInput = document.getElementById('fileUpload');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("لطفاً فایلی انتخاب کنید!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://your-server.com/upload", true);
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById("uploadStatus").innerHTML = "آپلود با موفقیت انجام شد!";
+                } else {
+                    document.getElementById("uploadStatus").innerHTML = "خطا در آپلود فایل. لطفاً دوباره تلاش کنید.";
+                }
+            };
+
+            xhr.onerror = function() {
+                document.getElementById("uploadStatus").innerHTML = "خطای شبکه. لطفاً دوباره تلاش کنید.";
+            };
+
+            xhr.send(formData);
         }
     </script>
 </body>
