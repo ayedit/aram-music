@@ -1,14 +1,16 @@
-<!DOCTYPE html><html lang="fa">
+<!DOCTYPE html>
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AY Edit - وبسایت موسیقی</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: url('https://source.unsplash.com/1600x900/?luxury,music') no-repeat center center/cover;
+            /* پس‌زمینه جدید با تصویر گل */
+            background: url('https://source.unsplash.com/1600x900/?flowers') no-repeat center center/cover;
             color: white;
             margin: 0;
             padding: 0;
@@ -29,6 +31,7 @@
             padding: 20px;
             border: 2px dashed #fff;
             cursor: pointer;
+            display: none; /* مخفی بودن بخش آپلود به طور پیش‌فرض */
         }
         .upload-section:hover {
             background: rgba(255, 255, 255, 0.2);
@@ -37,7 +40,7 @@
             display: none;
         }
         .logo {
-            font-family: 'Great Vibes', cursive;
+            font-family: 'Lobster', cursive;
             font-size: 50px;
             font-weight: bold;
             color: white;
@@ -54,10 +57,26 @@
         <div class="logo">AY</div>
         <h2>به دنیای موسیقی AY Edit خوش آمدید</h2>
         <p>اینجا می‌توانید آهنگ‌ها و ویدیوهای خود را آپلود کنید.</p>
-        <label class="upload-section">
-            <p>فایل خود را اینجا بکشید یا کلیک کنید</p>
-            <input type="file" id="fileUpload" accept="audio/*,video/*">
-        </label>
+
+        <!-- بخش آپلود -->
+        <div id="uploadSection" class="upload-section">
+            <label>
+                <p>فایل خود را اینجا بکشید یا کلیک کنید</p>
+                <input type="file" id="fileUpload" accept="audio/*,video/*">
+            </label>
+        </div>
     </div>
+
+    <script>
+        // فرض کنید شما وارد شده‌اید (برای تست این متغیر را تغییر دهید)
+        let isLoggedIn = true; // اگر شما وارد شدید، این را به true تغییر دهید
+
+        // اگر کاربر وارد شده باشد، بخش آپلود نمایش داده می‌شود
+        if (isLoggedIn) {
+            document.getElementById("uploadSection").style.display = "block"; // نمایش بخش آپلود برای شما
+        } else {
+            document.getElementById("uploadSection").style.display = "none"; // مخفی کردن بخش آپلود برای بقیه
+        }
+    </script>
 </body>
 </html>
