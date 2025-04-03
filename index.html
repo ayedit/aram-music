@@ -3,114 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AY Edit - وبسایت موسیقی</title>
+    <title>آرام موسیقی</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
         body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
             font-family: Arial, sans-serif;
             text-align: center;
-            background: url('https://source.unsplash.com/1600x900/?flowers') no-repeat center center/cover;
-            color: white;
-            margin: 0;
-            padding: 0;
         }
         header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            font-size: 24px;
-        }
-        .container {
-            margin: 20px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(255, 0, 100, 0.8);
             padding: 20px;
             border-radius: 10px;
         }
-        .upload-section {
-            margin-top: 30px;
-            padding: 20px;
-            border: 2px dashed #fff;
-            cursor: pointer;
-            display: none;
+        nav ul {
+            list-style: none;
+            padding: 0;
         }
-        .upload-section:hover {
-            background: rgba(255, 255, 255, 0.2);
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
         }
-        input[type="file"] {
-            display: none;
-        }
-        .logo {
-            font-family: 'Lobster', cursive;
-            font-size: 50px;
-            font-weight: bold;
+        nav ul li a {
             color: white;
-            background: rgba(0, 0, 0, 0.5);
-            display: inline-block;
-            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        section {
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        .category {
+            margin: 15px 0;
+        }
+        audio, video {
+            width: 80%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255, 0, 100, 0.8);
             border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <header><a href="https://www.ayedit.com" style="color: white; text-decoration: none;">AY Edit - موسیقی و ویدیو</a></header>
-    <div class="container">
-        <div class="logo">AY</div>
-        <h2>به دنیای موسیقی AY Edit خوش آمدید</h2>
-        <p>اینجا می‌توانید آهنگ‌ها و ویدیوهای خود را آپلود کنید.</p>
-
-        <!-- بخش آپلود -->
-        <div id="uploadSection" class="upload-section">
-            <label>
-                <p>فایل خود را اینجا بکشید یا کلیک کنید</p>
-                <input type="file" id="fileUpload" accept="audio/*,video/*">
-            </label>
-            <button onclick="uploadFile()">آپلود فایل</button>
+    <header>
+        <h1>🎵 آرام موسیقی 🎬</h1>
+        <nav>
+            <ul>
+                <li><a href="#music">موسیقی</a></li>
+                <li><a href="#videos">ویدیو</a></li>
+                <li><a href="#upload">آپلود محتوا</a></li>
+                <li><a href="#contact">تماس با ما</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="music">
+        <h2>🎶 موسیقی‌ها</h2>
+        <div class="category">
+            <h3>قدیمی</h3>
+            <audio controls src="old_song.mp3"></audio>
         </div>
-        
-        <!-- نمایش وضعیت آپلود -->
-        <div id="uploadStatus"></div>
-    </div>
-
-    <script>
-        // فرض کنید شما وارد شده‌اید (برای تست این متغیر را تغییر دهید)
-        let isLoggedIn = true; // اگر شما وارد شدید، این را به true تغییر دهید
-
-        // اگر کاربر وارد شده باشد، بخش آپلود نمایش داده می‌شود
-        if (isLoggedIn) {
-            document.getElementById("uploadSection").style.display = "block"; // نمایش بخش آپلود برای شما
-        } else {
-            document.getElementById("uploadSection").style.display = "none"; // مخفی کردن بخش آپلود برای بقیه
-        }
-
-        // عملکرد آپلود فایل
-        function uploadFile() {
-            const fileInput = document.getElementById('fileUpload');
-            const file = fileInput.files[0];
-
-            if (!file) {
-                alert("لطفاً فایلی انتخاب کنید!");
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append("file", file);
-
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://your-server.com/upload", true);
-
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    document.getElementById("uploadStatus").innerHTML = "آپلود با موفقیت انجام شد!";
-                } else {
-                    document.getElementById("uploadStatus").innerHTML = "خطا در آپلود فایل. لطفاً دوباره تلاش کنید.";
-                }
-            };
-
-            xhr.onerror = function() {
-                document.getElementById("uploadStatus").innerHTML = "خطای شبکه. لطفاً دوباره تلاش کنید.";
-            };
-
-            xhr.send(formData);
-        }
-    </script>
+        <div class="category">
+            <h3>شاد</h3>
+            <audio controls src="happy_song.mp3"></audio>
+        </div>
+        <div class="category">
+            <h3>غمگین</h3>
+            <audio controls src="sad_song.mp3"></audio>
+        </div>
+    </section>
+    
+    <section id="videos">
+        <h2>🎥 ویدیوها</h2>
+        <div class="video-container">
+            <video controls src="video.mp4"></video>
+        </div>
+    </section>
+    
+    <section id="upload">
+        <h2>📤 آپلود موسیقی و ویدیو</h2>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            <label for="file">فایل خود را انتخاب کنید:</label>
+            <input type="file" name="file" id="file" required>
+            <button type="submit">آپلود</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p>تمامی حقوق محفوظ است &copy; 2025</p>
+    </footer>
 </body>
 </html>
