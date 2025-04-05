@@ -130,4 +130,69 @@
         }
 
         footer {
-            margin-top:
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255, 0, 100, 0.8);
+            border-radius: 10px;
+            animation: fadeIn 2s;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 80%;
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎵 آرام موسیقی 🎬</h1>
+        <nav>
+            <ul>
+                <li><a href="#music">موسیقی</a></li>
+                <li><a href="#videos">ویدیو</a></li>
+                <li><a href="#contact">تماس با ما</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="music">
+        <h2>🎶 موسیقی‌ها</h2>
+        <div class="category"><h3>آهنگ 1</h3><audio controls src="old_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 2</h3><audio controls src="happy_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 3</h3><audio controls src="https://ayedit.github.io/aram-music/4_5939282966789228256_2024_12_02_00_38_06_990.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 4</h3><audio controls src="classic_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 5</h3><audio controls src="pop_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 6</h3><audio controls src="rock_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 7</h3><audio controls src="instrumental.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 8</h3><audio controls src="traditional.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 9</h3><audio controls src="local_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 10</h3><audio controls src="foreign.mp3"></audio></div>
+    </section>
+
+    <section id="videos">
+        <h2>🎥 ویدیوها</h2>
+        <div class="video-container">
+            <video controls src="video.mp4"></video>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>📞 تماس با ما</h2>
+        <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+            <label for="name">نام:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="message">پیام:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            <button type="submit">ارسال</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>تمامی حقوق محفوظ است &copy; 2025</p>
+    </footer>
+</body>
+</html>
