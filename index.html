@@ -11,46 +11,140 @@
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
+            animation: fadeIn 2s ease-in;
         }
+
+        /* افکت پس‌زمینه موجی */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,0,255,0.05) 10%, transparent 10.01%);
+            background-size: 40px 40px;
+            z-index: -1;
+            animation: moveWaves 10s linear infinite;
+        }
+
+        @keyframes moveWaves {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         header {
             background: rgba(255, 0, 100, 0.8);
             padding: 20px;
             border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 0, 100, 0.7);
+            animation: slideDown 1s ease-out;
         }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         nav ul {
             list-style: none;
             padding: 0;
         }
+
         nav ul li {
             display: inline;
             margin: 0 15px;
+            transition: transform 0.3s;
         }
+
+        nav ul li:hover {
+            transform: scale(1.2);
+        }
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 18px;
         }
+
         section {
             margin: 30px 0;
             padding: 20px;
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.1);
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            animation: fadeIn 2s ease-in;
         }
+
+        h2, h3 {
+            animation: floatUp 1s ease-in-out;
+        }
+
+        @keyframes floatUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .category {
             margin: 15px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+
+        .category:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
         audio, video {
             width: 80%;
             border-radius: 10px;
             margin-top: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
+
+        audio:hover {
+            transform: scale(1.01) rotate(-0.3deg);
+            transition: transform 0.3s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #ff007f;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #ff007f;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff3399;
+        }
+
         footer {
             margin-top: 20px;
             padding: 10px;
             background: rgba(255, 0, 100, 0.8);
             border-radius: 10px;
+            animation: fadeIn 2s;
         }
+
+        input, textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 80%;
+            margin: 10px 0;
+        }
+
     </style>
 </head>
 <body>
@@ -60,47 +154,43 @@
             <ul>
                 <li><a href="#music">موسیقی</a></li>
                 <li><a href="#videos">ویدیو</a></li>
-                <li><a href="#upload">آپلود محتوا</a></li>
                 <li><a href="#contact">تماس با ما</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <section id="music">
         <h2>🎶 موسیقی‌ها</h2>
-        <div class="category">
-            <h3>قدیمی</h3>
-            <audio controls>
-                <source src="https://drive.google.com/uc?export=download&id=139N3aNcZNnsb6rhTG61Tp3x3XKWcOs20" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="category">
-            <h3>شاد</h3>
-            <audio controls src="happy_song.mp3"></audio>
-        </div>
-        <div class="category">
-            <h3>غمگین</h3>
-            <audio controls src="sad_song.mp3"></audio>
-        </div>
+        <div class="category"><h3>آهنگ 1</h3><audio controls src="old_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 2</h3><audio controls src="happy_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 3</h3><audio controls src="https://ayedit.github.io/aram-music/4_5939282966789228256_2024_12_02_00_38_06_990.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 4</h3><audio controls src="classic_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 5</h3><audio controls src="pop_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 6</h3><audio controls src="rock_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 7</h3><audio controls src="instrumental.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 8</h3><audio controls src="traditional.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 9</h3><audio controls src="local_song.mp3"></audio></div>
+        <div class="category"><h3>آهنگ 10</h3><audio controls src="foreign.mp3"></audio></div>
     </section>
-    
+
     <section id="videos">
         <h2>🎥 ویدیوها</h2>
         <div class="video-container">
             <video controls src="video.mp4"></video>
         </div>
     </section>
-    
-    <section id="upload">
-        <h2>📤 آپلود موسیقی و ویدیو</h2>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-            <label for="file">فایل خود را انتخاب کنید:</label>
-            <input type="file" name="file" id="file" required>
-            <button type="submit">آپلود</button>
+
+    <section id="contact">
+        <h2>📞 تماس با ما</h2>
+        <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+            <label for="name">نام:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="message">پیام:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            <button type="submit">ارسال</button>
         </form>
     </section>
-    
+
     <footer>
         <p>تمامی حقوق محفوظ است &copy; 2025</p>
     </footer>
