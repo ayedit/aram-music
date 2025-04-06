@@ -1,193 +1,304 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آرام موسیقی</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            animation: fadeIn 2s ease-in;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎵 آرام موسیقی</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #121212;
+      --card: #1f1f1f;
+      --text: #f1f1f1;
+      --accent: #ff6f61;
+      --accent-light: #ff4e50;
+      --highlight: #6c5ce7;
+      --shadow-dark: rgba(0, 0, 0, 0.5);
+      --shadow-light: rgba(255, 255, 255, 0.1);
+      --radius: 16px;
+    }
 
-        /* افکت پس‌زمینه موجی */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,0,255,0.05) 10%, transparent 10.01%);
-            background-size: 40px 40px;
-            z-index: -1;
-            animation: moveWaves 10s linear infinite;
-        }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(to bottom, #121212, #2a2a2a);
+      margin: 0;
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
 
-        @keyframes moveWaves {
-            0% { background-position: 0 0; }
-            100% { background-position: 100px 100px; }
-        }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--card);
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 10px var(--shadow-dark);
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    header h1 {
+      color: var(--highlight);
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
 
-        header {
-            background: rgba(255, 0, 100, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 0, 100, 0.7);
-            animation: slideDown 1s ease-out;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
 
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      color: var(--text);
+      position: relative;
+      padding: 5px 0;
+      transition: 0.3s;
+    }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
 
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-            transition: transform 0.3s;
-        }
+    nav ul li a:hover::after {
+      width: 100%;
+    }
 
-        nav ul li:hover {
-            transform: scale(1.2);
-        }
+    section {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 20px var(--shadow-dark);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        section {
-            margin: 30px 0;
-            padding: 20px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-            animation: fadeIn 2s ease-in;
-        }
+    h2 {
+      text-align: center;
+      color: var(--highlight);
+    }
 
-        h2, h3 {
-            animation: floatUp 1s ease-in-out;
-        }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: #888 #333;
+    }
 
-        @keyframes floatUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .carousel::-webkit-scrollbar {
+      width: 8px;
+    }
 
-        .category {
-            margin: 15px 0;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    .carousel::-webkit-scrollbar-track {
+      background: #333;
+    }
 
-        .category:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        }
+    .carousel::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 10px;
+    }
 
-        audio, video {
-            width: 80%;
-            border-radius: 10px;
-            margin-top: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        }
+    .category {
+      flex: 0 0 80%;
+      scroll-snap-align: start;
+      background: linear-gradient(135deg, #2f3542, #292e3d);
+      border-radius: var(--radius);
+      padding: 1rem;
+      box-shadow: inset 4px 4px 20px var(--shadow-light), inset -4px -4px 20px var(--shadow-dark);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
 
-        audio:hover {
-            transform: scale(1.01) rotate(-0.3deg);
-            transition: transform 0.3s ease;
-        }
+    .category:hover {
+      transform: translateY(-5px);
+      background: linear-gradient(135deg, #6c5ce7, #ff6f61);
+    }
 
-        button {
-            padding: 10px 20px;
-            border: none;
-            background: #ff007f;
-            color: white;
-            font-weight: bold;
-            border-radius: 10px;
-            box-shadow: 0 0 15px #ff007f;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    audio, video {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: var(--radius);
+      box-shadow: 0 0 15px var(--shadow-dark);
+      transition: transform 0.3s ease;
+    }
 
-        button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px #ff3399;
-        }
+    audio:hover, video:hover {
+      transform: scale(1.05) rotate(0.3deg);
+      box-shadow: 0 0 30px var(--highlight);
+    }
 
-        footer {
-            margin-top: 20px;
-            padding: 10px;
-            background: rgba(255, 0, 100, 0.8);
-            border-radius: 10px;
-            animation: fadeIn 2s;
-        }
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+    }
 
-        input, textarea {
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            width: 80%;
-            margin: 10px 0;
-        }
+    footer {
+      background: var(--card);
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 4rem;
+      border-radius: var(--radius) var(--radius) 0 0;
+      box-shadow: 0 4px 10px var(--shadow-dark);
+    }
 
-    </style>
+    footer p {
+      color: var(--text);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: var(--radius);
+      border: none;
+      box-shadow: inset 4px 4px 20px var(--shadow-light), inset -4px -4px 20px var(--shadow-dark);
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      background-color: #292e3d;
+      box-shadow: 0 4px 15px var(--highlight);
+    }
+
+    a {
+      color: var(--highlight);
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      .carousel {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🎵 آرام موسیقی 🎬</h1>
-        <nav>
-            <ul>
-                <li><a href="#music">موسیقی</a></li>
-                <li><a href="#videos">ویدیو</a></li>
-                <li><a href="#contact">تماس با ما</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="music">
-        <h2>🎶 موسیقی‌ها</h2>
-        <div class="category"><h3>آهنگ 1</h3><audio controls src="old_song.mp3"></audio></div>
-        <div class="category"><h3>آهنگ 2</h3><audio controls src="happy_song.mp3"></audio></div>
-        <div class="category"><h3>آهنگ 3</h3><audio controls src="https://ayedit.github.io/aram-music/4_5939282966789228256_2024_12_02_00_38_06_990.mp3"></audio></div>
-        <div class="category"><h3>آهنگ 4</h3><audio controls src="classic_song.mp3"></audio></div>
-        <div class="category"><h3>آهنگ 5</h3><audio controls src="pop_song.mp3"></audio></div>
-        <div class="category"><h3>آهنگ 6</h3><audio controls src="rock_song.mp3"></audio></div>
-        <div class="category"><h3>آهنگ 7</h3><audio controls src="instrumental.mp3"></audio></div>
-        <div class="category"><h3>آهنگ 8</h3><audio controls src="traditional.mp3"></audio></div>
-        <div class="category"><h3>آهنگ 9</h3><audio controls src="local_song.mp3"></audio></div>
-        <div class="category"><h3>آهنگ 10</h3><audio controls src="foreign.mp3"></audio></div>
-    </section>
+  <header>
+    <h1>🎵 آرام موسیقی</h1>
+    <nav>
+      <ul>
+        <li><a href="#music">موسیقی</a></li>
+        <li><a href="#videos">ویدیو</a></li>
+        <li><a href="#contact">تماس با ما</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section id="videos">
-        <h2>🎥 ویدیوها</h2>
-        <div class="video-container">
-            <video controls src="video.mp4"></video>
-        </div>
-    </section>
+  <section id="music">
+    <h2>🎶 موسیقی‌ها</h2>
+    <div class="carousel">
+      <div class="category"><h3>آهنگ 1</h3><audio controls src="https://ayedit.github.io/aram-music/4_5939282966789228256_2024_12_02_00_38_06_990.mp3"></audio></div>
+      <div class="category"><h3>آهنگ 2</h3><audio controls src="happy_song.mp3"></audio></div>
+      <div class="category"><h3>آهنگ 3</h3><audio controls src="foreign.mp3"></audio></div>
+      <div class="category"><h3>آهنگ 4</h3><audio controls src="classic_song.mp3"></audio></div>
+      <div class="category"><h3>آهنگ 5</h3><audio controls src="pop_song.mp3"></audio></div>
+      <div class="category"><h3>آهنگ 6</h3><audio controls src="rock_song.mp3"></audio></div>
+      <div class="category"><h3>آهنگ 7</h3><audio controls src="instrumental.mp3"></audio></div>
+      <div class="category"><h3>آهنگ 8</h3><audio controls src="traditional.mp3"></audio></div>
+      <div class="category"><h3>آهنگ 9</h3><audio controls src="local_song.mp3"></audio></div>
+      <div class="category"><h3>آهنگ 10</h3><audio controls src="foreign.mp3"></audio></div>
+    </div>
+  </section>
 
-    <section id="contact">
-        <h2>📞 تماس با ما</h2>
-        <p>برای تماس با ما، می‌توانید به ایمیل زیر ارسال کنید:</p>
-        <p><a href="mailto:aram6music@gmail.com">aram6music@gmail.com</a></p>
-    </section>
+  <section id="videos">
+    <h2>🎥 ویدیوها</h2>
+    <div class="carousel">
+      <div class="category">
+        <video controls src="video1.mp4"></video>
+        <h3>ویدیو 1</h3>
+      </div>
+      <div class="category">
+        <video controls src="video2.mp4"></video>
+        <h3>ویدیو 2</h3>
+      </div>
+      <div class="category">
+        <video controls src="video3.mp4"></video>
+        <h3>ویدیو 3</h3>
+      </div>
+      <div class="category">
+        <video controls src="video4.mp4"></video>
+        <h3>ویدیو 4</h3>
+      </div>
+      <div class="category">
+        <video controls src="video5.mp4"></video>
+        <h3>ویدیو 5</h3>
+      </div>
+      <div class="category">
+        <video controls src="video6.mp4"></video>
+        <h3>ویدیو 6</h3>
+      </div>
+      <div class="category">
+        <video controls src="video7.mp4"></video>
+        <h3>ویدیو 7</h3>
+      </div>
+      <div class="category">
+        <video controls src="video8.mp4"></video>
+        <h3>ویدیو 8</h3>
+      </div>
+      <div class="category">
+        <video controls src="video9.mp4"></video>
+        <h3>ویدیو 9</h3>
+      </div>
+      <div class="category">
+        <video controls src="video10.mp4"></video>
+        <h3>ویدیو 10</h3>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>تمامی حقوق محفوظ است &copy; 2025</p>
-    </footer>
+  <section id="contact">
+    <h2>📞 تماس با ما</h2>
+    <p>به ایمیل زیر پیام بگذارید:</p>
+    <p><a href="mailto:aram6music@gmail.com">aram6music@gmail.com</a></p>
+  </section>
+
+  <footer>
+    <p>تمامی حقوق محفوظ است &copy; 2025 آرام موسیقی</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
 </body>
 </html>
